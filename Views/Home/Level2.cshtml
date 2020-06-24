@@ -1,0 +1,45 @@
+@using System.Text
+
+<div class="text-center" style="width: 45%; border: 1px solid black; padding: 10px; height: 250px;">
+    <h1 class="display-4">
+        @{
+            @if(ViewBag.loggedin.WordList.Count == 0){
+                <a href="level1">Start Game</a>
+            }
+            else{
+                var jumble = new StringBuilder(ViewBag.loggedin.WordList[0].Word.Title);
+                int length = jumble.Length;
+                var random = new Random();
+                for(int i=length-1; i>0; i--)
+                {
+                    int j = random.Next(i);
+                    char temp = jumble[j];
+                    jumble[j] = jumble[i];
+                    jumble[i] = temp;
+                }
+                <p>@jumble</p>
+            }
+        }
+    </h1><br>
+
+    <form class="col-md-12" action="/submit2" method="post" style="margin-left: 45px;">
+        <div class="form-group row">
+            <input class="col-md-6" type="text" name="word"> |
+            <button class="col-sm-3 btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+<div>
+    @{
+        if(ViewBag.Next != null){
+            @ViewBag.Next
+            <h3><a href="/level3">Next Level</a></h3>
+        }
+        else if(ViewBag.Message != null){
+            <p>@ViewBag.Message</p>
+        }
+    }
+    <div style="width: 50px; height: 50px; border: 1px solid black;">
+        @ViewBag.loggedin.Points
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Wrapper
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <form class="col-sm-10" asp-action="AddUser" asp-controller="Home" method="post">
+            <h1>Register Here!</h1>
+            <div class="form-group row">
+                <span class="col-sm-12 text-danger" asp-validation-for="Person.Alias"></span>
+                <label class="col-sm-4">First name: </label>
+                <input asp-for="Person.Alias" class="col-sm-8">
+            </div>
+            <div class="form-group row">
+                <span class="col-sm-12 text-danger" asp-validation-for="Person.Email"></span>
+                <label class="col-sm-4">Email: </label>
+                <input asp-for="Person.Email" class="col-sm-8">
+            </div>
+            <div class="form-group row">
+                <span class="col-sm-12 text-danger" asp-validation-for="Person.Password"></span>
+                <label class="col-sm-4">Password: </label>
+                <input asp-for="Person.Password" class="col-sm-8">
+            </div>
+            <div class="form-group row">
+                <span class="col-sm-12 text-danger" asp-validation-for="Person.Confirm"></span>
+                <label class="col-sm-4">Confirm password: </label>
+                <input asp-for="Person.Confirm" class="col-sm-8">
+            </div>
+            
+            <div class="form-group row">
+                <input type="submit" class="col-sm-4 btn btn-primary" value="Submit">
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-6">
+        <form class="col-sm-8" asp-action="Login" asp-controller="Home" method="post">
+            <h1>Login</h1>
+            <div class="form-group row">
+                <span class="col-sm-12 text-danger" asp-validation-for="LogPers.Email"></span>
+                <label class="col-sm-4">Email: </label>
+                <input asp-for="LogPers.Email" class="col-sm-8">
+            </div>
+            <div class="form-group row">
+                <span class="col-sm-12 text-danger" asp-validation-for="LogPers.Password"></span>
+                <label class="col-sm-4">Password: </label>
+                <input asp-for="LogPers.Password" class="col-sm-8">
+            </div>
+            <div class="form-group row">
+                <input type="submit" class="col-sm-4 btn btn-primary" value="Submit">
+            </div>
+        </form>
+    </div>
+</div>
